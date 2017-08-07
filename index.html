@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<!--
+Created using JS Bin
+http://jsbin.com
+
+Copyright (c) 2017 by jarabik8810 (http://jsbin.com/gazijus/1/edit)
+
+Released under the MIT license: http://jsbin.mit-license.org
+-->
+<meta name="robots" content="noindex">
+<html>
+<head>
+<meta name="description" content="Registration form">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>JS Bin</title>
+<script src="https://code.jquery.com/jquery-3.0.0.js"></script>
+  
+<style id="jsbin-css">
+.not_valid {
+  background-color: red;
+}
+
+</style>
+</head>
+<body>
+  <h1>This is a registration form</h1>
+  <form id="my_form">
+    <label for="user_name">Your name: </label>
+    <input type="text" name="user_name" id="user_name">
+    <br>
+    <br>
+    <label for="user_email">Your emali: </label>
+    <input type="text" name="user_email" id="user_email">
+    <br>
+    <br>
+    <button type="submit">Submit</button>
+  </form>
+
+<script id="jsbin-javascript">
+$( document ).ready( function() {
+  $("#my_form").submit(function(){
+    var un = $('#user_name');
+  var ue = $('#user_email');
+  
+  if (un.val() == "") {
+    alert("User name empty! Please fill this field.");
+    un.addClass( 'not_valid' );
+    return false;
+  } else if ( ue.val() == "") {
+    alert("User email empty! Please fill this field");
+    ue.addClass( 'not_valid' ); 
+    return false;
+    } else if ( !validateEmail(ue.val()) ){
+      alert("User email non valid! Please correct this field value.");
+      ue.addClass( 'not_valid' );
+      return false;
+    }
+    
+  
+    
+  });
+});
+
+//email validator
+function validateEmail(email) {
+    var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(email);
+}
+
+
+
+
+
+
+  
+
+  
+  
+
+</script>
+</body>
+</html>
